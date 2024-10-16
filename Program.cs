@@ -3,7 +3,7 @@ using Debugging.Service;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Logging.AddConsole();
 builder.Services.AddScoped<ICalculationService, CalculationService>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

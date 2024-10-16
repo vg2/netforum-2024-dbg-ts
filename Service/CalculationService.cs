@@ -1,10 +1,21 @@
 ﻿namespace Debugging.Service;
+
+using Debugging.Functions;
+
 public interface ICalculationService
 {
     int AddNumbers(int num1, int num2);
     int DivideNumbers(int numerator, int denominator);
     int DivideByNumbersNoNo(int numerator, int denominator);
     int DivideByNumbersBetter(int numerator, int denominator);
+    int ComplexThing(int x, int y, int z);
+    int RequestCalculation(CalculateRequest? request);
+}
+
+public class CalculateRequest
+{
+    public int A { get; set; }
+    public int B { get; set; }
 }
 
 public class CalculationService : ICalculationService
@@ -59,4 +70,16 @@ public class CalculationService : ICalculationService
             throw; 
         }
     }
+
+    public int ComplexThing(int x, int y, int z)
+    {
+        var result = PureCalculations.CalculateSomethingCool(x, y, z);
+
+        return result;
+    }
+
+    public int RequestCalculation(CalculateRequest? request)
+    {
+        return request.A % request.B;
+    } 
 }
